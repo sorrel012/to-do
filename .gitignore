@@ -13,3 +13,8 @@ node_modules
 *.iws
 *.iml
 *.ipr
+
+### build ###
+build
+.env.development
+.env.production
