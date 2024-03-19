@@ -5,7 +5,9 @@ import styled from 'styled-components';
 import { CSSTransition } from 'react-transition-group';
 import CreateCategory from '../components/CreateCategory';
 
-const CategoryLayout = styled.div``;
+const CategoryLayout = styled.div`
+  width: 100%;
+`;
 
 const CategorySelectLayout = styled.div`
   margin: 20px auto;
