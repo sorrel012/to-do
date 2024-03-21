@@ -42,6 +42,16 @@ export const categorySelector = selector({
   },
 });
 
+export const categoryChangeSelector = selector({
+  key: 'categoryChangeSelector',
+  get: ({ get }) => {
+    const categories = get(categoryState);
+    return categories.categories.filter(
+      (category) => category.id !== categories.selectedCategoryId,
+    );
+  },
+});
+
 export const toDoState = atom<IToDo[]>({
   key: 'toDo',
   default: [],

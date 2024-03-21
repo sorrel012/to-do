@@ -38,7 +38,7 @@ const Text = styled.span`
   flex: 9;
 `;
 
-const Arrow = styled.span<{ isOpen: boolean }>`
+export const Arrow = styled.span<{ isOpen: boolean }>`
   margin-right: 5px;
   font-size: small;
   transition: transform 0.3s ease-in;
@@ -57,7 +57,7 @@ const CategoryList = styled.ul`
   overflow-y: auto;
   opacity: 0;
   visibility: hidden;
-
+  z-index: 10;
   transition: opacity 0.2s ease-in;
 
   &.show {
