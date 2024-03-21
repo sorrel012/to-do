@@ -33,11 +33,11 @@
 
 ## 📷화면
 ### ◼ 메인화면<br>
-<img src="https://github.com/sorrel012/to-do/assets/115568532/85d6dc50-9a65-4372-b252-c00bda7d9018" style="width: 500px; height: 500px;" />
+<img src="https://github.com/sorrel012/to-do/assets/115568532/85d6dc50-9a65-4372-b252-c00bda7d9018" style="width: 500px; height: 560px;" />
   <br><br>
 
 ### ◼ 카테고리 관리 - 카테고리 선택<br>
-<img src="https://github.com/sorrel012/to-do/assets/115568532/ecc86a7d-724b-4bfb-b63f-1e148bf9db91" style="width: 500px; height: 600px;" />
+<img src="https://github.com/sorrel012/to-do/assets/115568532/ecc86a7d-724b-4bfb-b63f-1e148bf9db91" style="width: 500px; height: 550px;" />
   <br><br>
 
 ### ◼ 카테고리 관리 - 카테고리 추가<br>
