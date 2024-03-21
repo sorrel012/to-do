@@ -4,11 +4,12 @@
   
 ## 🖥 주요 기능
 - 카테고리 관리
-  - 일정 카테고리를 원하는 대로 추가할 수 있다.
+  - 원하는 카테고리를 추가할 수 있다.
   - 카테고리별 일정을 확인할 수 있다.
 
 - 일정 관리
   - 선택된 카테고리에 일정을 추가할 수 있다.
+  - 일정의 카테고리를 변경할 수 있다.
   - 선택된 카테고리에서 일정을 삭제할 수 있다.
 
 <br>
@@ -32,21 +33,28 @@
 
 ## 📷화면
 ### ◼ 메인화면<br>
-
-<img src="https://github.com/sorrel012/to-do/assets/115568532/eb64e7d3-c792-4f87-ab40-873c832ce5d9" style="width: 500px; height: 500px;" />
+<img src="https://github.com/sorrel012/to-do/assets/115568532/85d6dc50-9a65-4372-b252-c00bda7d9018" style="width: 500px; height: 500px;" />
   <br><br>
 
 ### ◼ 카테고리 관리 - 카테고리 선택<br>
-<img src="https://github.com/sorrel012/to-do/assets/115568532/91a16fb7-a112-4c1e-8837-ff48042c46da" style="width: 500px; height: 600px;" />
+<img src="https://github.com/sorrel012/to-do/assets/115568532/ecc86a7d-724b-4bfb-b63f-1e148bf9db91" style="width: 500px; height: 600px;" />
   <br><br>
 
 ### ◼ 카테고리 관리 - 카테고리 추가<br>
-<img src="https://github.com/sorrel012/to-do/assets/115568532/30322ba2-2b92-4f82-9a54-b1e238371a44" style="width: 500px; height: 550px;" />
+<img src="https://github.com/sorrel012/to-do/assets/115568532/572a44fc-5ca8-4727-a620-70f418dc9473" style="width: 500px; height: 550px;" />
   <br><br>
 
 ### ◼ 일정 추가<br>
-<img src="https://github.com/sorrel012/to-do/assets/115568532/a414a703-2e92-49e2-acb9-99a73d41c196" style="width: 500px; height: 550px;" />
-  <br>
+<img src="https://github.com/sorrel012/to-do/assets/115568532/ecf50667-0171-433d-a218-cc830035fc4a" style="width: 500px; height: 550px;" />
+  <br><br>
+  
+### ◼ 일정 카테고리 변경<br>
+<img src="https://github.com/sorrel012/to-do/assets/115568532/62d225fd-2d52-4958-a03b-bcd933ccdd60" style="width: 500px; height: 550px;" />
+  <br><br>
+
+### ◼ 일정 삭제<br>
+<img src="https://github.com/sorrel012/to-do/assets/115568532/16d1493c-090e-44e7-b948-128d401e9236" style="width: 500px; height: 550px;" />
+  <br><br>
 
 ## 📁 참고 강의
 - 노마드코더: React JS 마스터클래스
