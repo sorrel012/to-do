@@ -9,7 +9,7 @@ import styled from 'styled-components';
 import Swal from 'sweetalert2';
 import React, { useEffect, useRef, useState } from 'react';
 import { Arrow, dropdownVariants } from '../views/Category';
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 
 const Item = styled.li`
   list-style: none;
@@ -25,7 +25,7 @@ const ItemText = styled.div`
   align-items: center;
 `;
 
-const Checkbox = styled.span`
+const Checkbox = styled(motion.span)`
   margin-right: 5px;
   cursor: pointer;
 `;
@@ -155,7 +155,14 @@ function TodoItem({ text, id }: IToDo) {
   return (
     <Item>
       <ItemText>
-        <Checkbox className="material-symbols-outlined" onClick={handleClick}>
+        <Checkbox
+          whileHover={{ rotate: [0, 45, -45, 0] }}
+          transition={{
+            rotateZ: { duration: 0.4 },
+          }}
+          className="material-symbols-outlined"
+          onClick={handleClick}
+        >
           <span className="material-symbols-outlined">delete</span>
         </Checkbox>
         <Text>{text}</Text>
@@ -166,24 +173,26 @@ function TodoItem({ text, id }: IToDo) {
             <CategoryText>{'변경'}</CategoryText>
             <Arrow isOpen={isDropdownOpen}>▼</Arrow>
           </SelectedCategory>
-          {isDropdownOpen && (
-            <CategoryList
-              variants={dropdownVariants}
-              initial="closed"
-              animate="open"
-              exit="closed"
-              transition={{
-                opacity: { duration: 0.5 },
-                height: { duration: 0.3 },
-              }}
-            >
-              {categories.map((option) => (
-                <li key={option.id} onClick={() => onCategoryChange(option)}>
-                  {option.text}
-                </li>
-              ))}
-            </CategoryList>
-          )}
+          <AnimatePresence>
+            {isDropdownOpen && (
+              <CategoryList
+                variants={dropdownVariants}
+                initial="closed"
+                animate="open"
+                exit="closed"
+                transition={{
+                  opacity: { duration: 0.4 },
+                  height: { duration: 0.3 },
+                }}
+              >
+                {categories.map((option) => (
+                  <li key={option.id} onClick={() => onCategoryChange(option)}>
+                    {option.text}
+                  </li>
+                ))}
+              </CategoryList>
+            )}
+          </AnimatePresence>
         </DropdownContainer>
       </CategorySelectLayout>
     </Item>
