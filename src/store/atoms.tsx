@@ -22,7 +22,11 @@ const { persistAtom } = recoilPersist();
 export const categoryState = atom<ICategoryState>({
   key: 'categories',
   default: {
-    categories: [{ text: 'To Do', id: 1 }],
+    categories: [
+      { text: '할 일', id: 1 },
+      { text: '진행 중', id: 2 },
+      { text: '완료', id: 3 },
+    ],
     selectedCategoryId: 1,
   },
   effects_UNSTABLE: [persistAtom],
