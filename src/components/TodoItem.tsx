@@ -8,7 +8,8 @@ import { useRecoilValue, useSetRecoilState } from 'recoil';
 import styled from 'styled-components';
 import Swal from 'sweetalert2';
 import React, { useEffect, useRef, useState } from 'react';
-import { Arrow } from '../views/Category';
+import { Arrow, dropdownVariants } from '../views/Category';
+import { motion } from 'framer-motion';
 
 const Item = styled.li`
   list-style: none;
@@ -57,7 +58,7 @@ const SelectedCategory = styled.div`
   align-items: center;
 `;
 
-const CategoryList = styled.ul`
+const CategoryList = styled(motion.ul)`
   padding: 0;
   margin: 0;
   position: absolute;
@@ -65,16 +66,8 @@ const CategoryList = styled.ul`
   background: white;
   border: 1px solid #ddd;
   max-height: 200px;
-  overflow-y: auto;
-  opacity: 0;
-  visibility: hidden;
+  overflow-y: visible;
   z-index: 5;
-  transition: opacity 0.2s ease-in;
-
-  &.show {
-    opacity: 1;
-    visibility: visible;
-  }
 
   li {
     padding: 10px;
@@ -173,13 +166,24 @@ function TodoItem({ text, id }: IToDo) {
             <CategoryText>{'변경'}</CategoryText>
             <Arrow isOpen={isDropdownOpen}>▼</Arrow>
           </SelectedCategory>
-          <CategoryList className={isDropdownOpen ? 'show' : ''}>
-            {categories.map((option) => (
-              <li key={option.id} onClick={() => onCategoryChange(option)}>
-                {option.text}
-              </li>
-            ))}
-          </CategoryList>
+          {isDropdownOpen && (
+            <CategoryList
+              variants={dropdownVariants}
+              initial="closed"
+              animate="open"
+              exit="closed"
+              transition={{
+                opacity: { duration: 0.5 },
+                height: { duration: 0.3 },
+              }}
+            >
+              {categories.map((option) => (
+                <li key={option.id} onClick={() => onCategoryChange(option)}>
+                  {option.text}
+                </li>
+              ))}
+            </CategoryList>
+          )}
         </DropdownContainer>
       </CategorySelectLayout>
     </Item>

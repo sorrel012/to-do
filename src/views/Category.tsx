@@ -2,8 +2,8 @@ import { categorySelector, categoryState, ICategory } from '../store/atoms';
 import React, { useEffect, useRef, useState } from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import styled from 'styled-components';
-import { CSSTransition } from 'react-transition-group';
 import CreateCategory from '../components/CreateCategory';
+import { AnimatePresence, motion } from 'framer-motion';
 
 const CategoryLayout = styled.div`
   width: 100%;
@@ -46,7 +46,7 @@ export const Arrow = styled.span<{ isOpen: boolean }>`
   transform-origin: 50% 40%;
 `;
 
-const CategoryList = styled.ul`
+const CategoryList = styled(motion.ul)`
   padding: 0;
   margin: 0;
   position: absolute;
@@ -54,16 +54,8 @@ const CategoryList = styled.ul`
   background: white;
   border: 1px solid #ddd;
   max-height: 200px;
-  overflow-y: auto;
-  opacity: 0;
-  visibility: hidden;
+  overflow-y: visible;
   z-index: 10;
-  transition: opacity 0.2s ease-in;
-
-  &.show {
-    opacity: 1;
-    visibility: visible;
-  }
 
   li {
     padding: 10px;
@@ -85,6 +77,17 @@ const Button = styled.button`
   transform: scale(1.1);
   cursor: pointer;
 `;
+
+export const dropdownVariants = {
+  open: {
+    opacity: 1,
+    height: 'auto',
+  },
+  closed: {
+    opacity: 0,
+    height: 0,
+  },
+};
 
 function Category() {
   const [categories, setCategories] = useRecoilState(categoryState);
@@ -140,29 +143,39 @@ function Category() {
             </Text>
             <Arrow isOpen={isDropdownOpen}>▼</Arrow>
           </SelectedCategory>
-          <CategoryList className={isDropdownOpen ? 'show' : ''}>
-            {categories.categories.map((option) => (
-              <li key={option.id} onClick={() => onCategorySelect(option)}>
-                {option.text}
-              </li>
-            ))}
-          </CategoryList>
+          <AnimatePresence>
+            {isDropdownOpen && (
+              <CategoryList
+                variants={dropdownVariants}
+                initial="closed"
+                animate="open"
+                exit="closed"
+                transition={{
+                  opacity: { duration: 0.5 },
+                  height: { duration: 0.3 },
+                }}
+              >
+                {categories.categories.map((option) => (
+                  <li key={option.id} onClick={() => onCategorySelect(option)}>
+                    {option.text}
+                  </li>
+                ))}
+              </CategoryList>
+            )}
+          </AnimatePresence>
         </DropdownContainer>
         <Button onClick={onAddButtonClick}>
           <span className="material-symbols-outlined">add_box</span>
         </Button>
       </CategorySelectLayout>
-      <CSSTransition
-        in={isNewToDo}
-        timeout={200}
-        classNames="fade"
-        unmountOnExit
-      >
-        <CreateCategory
-          onCategorySave={onAddCancelClick}
-          onAddCancelClick={onAddCancelClick}
-        />
-      </CSSTransition>
+      <AnimatePresence>
+        {isNewToDo && (
+          <CreateCategory
+            onCategorySave={onAddCancelClick}
+            onAddCancelClick={onAddCancelClick}
+          />
+        )}
+      </AnimatePresence>
     </CategoryLayout>
   );
 }

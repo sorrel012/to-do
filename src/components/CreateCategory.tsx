@@ -4,8 +4,9 @@ import { categoryState } from '../store/atoms';
 import styled from 'styled-components';
 import Swal from 'sweetalert2';
 import { useEffect } from 'react';
+import { motion } from 'framer-motion';
 
-const Form = styled.form`
+const Form = styled(motion.form)`
   margin: 0 auto 10px;
   width: 60%;
   display: flex;
@@ -43,6 +44,11 @@ interface ICategoryProps {
 interface IForm {
   category: string;
 }
+
+export const newCategoryVariants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1 },
+};
 
 function CreateCategory({ onAddCancelClick, onCategorySave }: ICategoryProps) {
   const setCategories = useSetRecoilState(categoryState);
@@ -82,7 +88,13 @@ function CreateCategory({ onAddCancelClick, onCategorySave }: ICategoryProps) {
   };
 
   return (
-    <Form onSubmit={handleSubmit(onNewCategorySubmit)}>
+    <Form
+      variants={newCategoryVariants}
+      initial="hidden"
+      animate="visible"
+      exit="hidden"
+      onSubmit={handleSubmit(onNewCategorySubmit)}
+    >
       <Input
         {...register('category', {
           required: '카테고리명을 입력해주세요.',
