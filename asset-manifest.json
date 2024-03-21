@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "https://sorrel012.github.io/to-do/static/js/main.c0e68cc5.js",
+    "main.js": "https://sorrel012.github.io/to-do/static/js/main.5cdedcb8.js",
     "index.html": "https://sorrel012.github.io/to-do/index.html",
-    "main.c0e68cc5.js.map": "https://sorrel012.github.io/to-do/static/js/main.c0e68cc5.js.map"
+    "main.5cdedcb8.js.map": "https://sorrel012.github.io/to-do/static/js/main.5cdedcb8.js.map"
   },
   "entrypoints": [
-    "static/js/main.c0e68cc5.js"
+    "static/js/main.5cdedcb8.js"
   ]
 }
